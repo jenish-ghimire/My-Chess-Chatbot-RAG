@@ -4,15 +4,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MessageBubble } from './MessageBubble';
 import { ChatInput } from './ChatInput';
 import { ChatMessage } from '@/lib/llm';
-import { ShieldCheck, Cpu, Database, RefreshCw, Sparkles } from 'lucide-react';
+import { RefreshCw, Trophy, Crown, Star, Target, ExternalLink } from 'lucide-react';
 
 export const ChatWindow: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      id: 'welcome-1',
+      id: 'welcome-chess',
       role: 'assistant',
       content:
-        'Hello! I am the OwnerHive AI Assistant. Stage 1 setup is complete and ready. Ask me any question to test the basic chat connection!',
+        "👋 Welcome! I am the Chess Profile AI Assistant for **Jenish Ghimire**.\n\nI can answer questions regarding his FIDE credentials, federation (Nepal), rating (~1686), and show links to his active Lichess and Chess.com gaming profiles. Ask me anything to test the AWS Bedrock integration!",
       timestamp: new Date().toISOString(),
     },
   ]);
@@ -76,7 +76,7 @@ export const ChatWindow: React.FC = () => {
       {
         id: `welcome-${Date.now()}`,
         role: 'assistant',
-        content: 'Chat cleared. How can I assist you now?',
+        content: 'Conversation history cleared. Ask me any chess profile questions!',
         timestamp: new Date().toISOString(),
       },
     ]);
@@ -85,33 +85,54 @@ export const ChatWindow: React.FC = () => {
   return (
     <div className="flex flex-col h-screen max-w-5xl mx-auto w-full bg-slate-950 border-x border-slate-900 shadow-2xl">
       {/* Header Bar */}
-      <header className="flex items-center justify-between px-6 py-4 border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-10">
+      <header className="flex flex-col sm:flex-row sm:items-center justify-between px-6 py-4 border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-10 gap-3">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 shadow-lg shadow-indigo-500/25">
-            <Sparkles className="h-5 w-5 text-white" />
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-tr from-amber-600 via-amber-500 to-yellow-500 shadow-lg shadow-amber-500/20 text-slate-950">
+            <Crown className="h-6 w-6 font-bold" />
           </div>
           <div>
             <h1 className="font-bold text-slate-100 text-base tracking-tight flex items-center gap-2">
-              OwnerHive AI Assistant
-              <span className="inline-flex items-center gap-1 text-[11px] font-normal bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 px-2 py-0.5 rounded-full">
-                Mini RAG Prototype
+              Jenish Ghimire Chess AI
+              <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-amber-500/10 border border-amber-500/30 text-amber-400 px-2 py-0.5 rounded-full">
+                FIDE 12328421
               </span>
             </h1>
-            <p className="text-xs text-slate-400 flex items-center gap-3 mt-0.5">
-              <span className="flex items-center gap-1 text-emerald-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Stage 1 Active
+            <p className="text-xs text-slate-400 flex flex-wrap items-center gap-x-3 gap-y-1 mt-0.5">
+              <span className="flex items-center gap-1 text-amber-400 font-semibold">
+                <Trophy className="h-3.5 w-3.5" /> Rating: 1686 (NEP)
               </span>
-              <span className="flex items-center gap-1">
-                <Cpu className="h-3 w-3 text-slate-500" /> LLM Ready
-              </span>
-              <span className="flex items-center gap-1">
-                <Database className="h-3 w-3 text-slate-500" /> Vector Store Pending
-              </span>
+              <span className="h-3 w-px bg-slate-800 hidden sm:inline"></span>
+              <a
+                href="https://ratings.fide.com/profile/12328421"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-400 flex items-center gap-0.5 transition-colors"
+              >
+                FIDE <ExternalLink className="h-2.5 w-2.5" />
+              </a>
+              <span className="h-3 w-px bg-slate-800"></span>
+              <a
+                href="https://www.chess.com/member/jenishghimirechess"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-400 flex items-center gap-0.5 transition-colors"
+              >
+                Chess.com <ExternalLink className="h-2.5 w-2.5" />
+              </a>
+              <span className="h-3 w-px bg-slate-800"></span>
+              <a
+                href="https://lichess.org/@/jenishghimire"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-400 flex items-center gap-0.5 transition-colors"
+              >
+                Lichess <ExternalLink className="h-2.5 w-2.5" />
+              </a>
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 self-end sm:self-center">
           <button
             onClick={handleClearChat}
             className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 bg-slate-900 hover:bg-slate-800 border border-slate-800 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
@@ -131,12 +152,12 @@ export const ChatWindow: React.FC = () => {
         {/* Loading Indicator */}
         {isLoading && (
           <div className="flex gap-3 py-3 px-4 items-center">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">
-              <Sparkles className="h-4 w-4 animate-spin" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/30">
+              <Star className="h-4 w-4 animate-spin" />
             </div>
             <div className="rounded-2xl bg-slate-900/80 border border-slate-800 px-4 py-3 text-xs text-slate-400 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-indigo-500 animate-ping"></span>
-              OwnerHive Assistant is processing...
+              <span className="h-2 w-2 rounded-full bg-amber-500 animate-ping"></span>
+              Assistant thinking...
             </div>
           </div>
         )}
@@ -146,7 +167,15 @@ export const ChatWindow: React.FC = () => {
 
       {/* Footer / Input Area */}
       <footer className="p-4 sm:p-6 border-t border-slate-900 bg-slate-950/90 backdrop-blur-md">
-        <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
+        <ChatInput
+          onSendMessage={handleSendMessage}
+          isLoading={isLoading}
+          suggestions={[
+            "What is Jenish Ghimire's FIDE rating and ID?",
+            "Show links to Jenish's Chess.com and Lichess profiles.",
+            "Tell me about Jenish's federation.",
+          ]}
+        />
       </footer>
     </div>
   );

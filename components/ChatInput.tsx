@@ -13,9 +13,9 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   onSendMessage,
   isLoading,
   suggestions = [
-    'What is Review Booster?',
-    'How does OwnerHive RAG architecture work?',
-    'What are the core features of OwnerHive?',
+    "What is Jenish Ghimire's FIDE rating?",
+    "Show links to Jenish's chess profiles.",
+    "Tell me about Jenish Ghimire's chess federations.",
   ],
 }) => {
   const [input, setInput] = useState('');
@@ -45,7 +45,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
       {/* Quick Suggestion Pills */}
       {suggestions.length > 0 && (
         <div className="flex flex-wrap gap-2 px-1">
-          <div className="flex items-center gap-1.5 text-xs text-indigo-400 font-medium mr-1">
+          <div className="flex items-center gap-1.5 text-xs text-amber-400 font-medium mr-1">
             <Sparkles className="h-3.5 w-3.5" /> Prompt Suggestions:
           </div>
           {suggestions.map((prompt, idx) => (
@@ -53,7 +53,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               key={idx}
               onClick={() => handleSuggestionClick(prompt)}
               disabled={isLoading}
-              className="text-xs bg-slate-900/90 hover:bg-indigo-950/70 text-slate-300 hover:text-indigo-200 border border-slate-800 hover:border-indigo-500/40 px-3 py-1 rounded-full transition-all duration-200 shadow-xs cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className="text-xs bg-slate-900/90 hover:bg-amber-950/70 text-slate-300 hover:text-amber-200 border border-slate-800 hover:border-amber-500/40 px-3 py-1 rounded-full transition-all duration-200 shadow-xs cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {prompt}
             </button>
@@ -68,16 +68,16 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Ask OwnerHive Assistant a question..."
+          placeholder="Ask Chess AI Assistant about Jenish Ghimire..."
           rows={1}
           disabled={isLoading}
-          className="w-full resize-none rounded-xl bg-slate-900 border border-slate-800 py-3.5 pl-4 pr-12 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 disabled:opacity-60 transition-colors shadow-inner"
+          className="w-full resize-none rounded-xl bg-slate-900 border border-slate-800 py-3.5 pl-4 pr-12 text-sm text-slate-100 placeholder-slate-500 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 disabled:opacity-60 transition-colors shadow-inner"
         />
 
         <button
           type="submit"
           disabled={!input.trim() || isLoading}
-          className="absolute right-2.5 p-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white disabled:bg-slate-800 disabled:text-slate-600 transition-all shadow-md cursor-pointer disabled:cursor-not-allowed"
+          className="absolute right-2.5 p-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 disabled:bg-slate-800 disabled:text-slate-600 transition-all shadow-md cursor-pointer disabled:cursor-not-allowed"
           title="Send message"
         >
           {isLoading ? (
@@ -89,7 +89,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
       </form>
       <div className="flex justify-between px-2 text-[11px] text-slate-500">
         <span>Press <kbd className="bg-slate-800 px-1 py-0.5 rounded text-slate-400">Enter</kbd> to send, <kbd className="bg-slate-800 px-1 py-0.5 rounded text-slate-400">Shift + Enter</kbd> for new line</span>
-        <span>OwnerHive AI Assistant v1.0</span>
+        <span>Jenish Ghimire Chess AI v1.0</span>
       </div>
     </div>
   );

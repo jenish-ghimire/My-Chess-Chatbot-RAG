@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OwnerHive AI Assistant | Mini RAG Prototype",
-  description: "Production-inspired AI assistant answering questions using Retrieval-Augmented Generation.",
+  title: "Jenish Ghimire Chess AI Assistant | FIDE Profile & Stats",
+  description: "AI Chess Assistant providing insights, profile details, and FIDE stats for FIDE Candidate Jenish Ghimire.",
 };
 
 export default function RootLayout({

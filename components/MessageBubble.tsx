@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Bot, User, FileText, Check, Copy } from 'lucide-react';
+import { Crown, User, FileText, Check, Copy } from 'lucide-react';
 import { ChatMessage } from '@/lib/llm';
 
 interface MessageBubbleProps {
@@ -25,22 +25,22 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       }`}
     >
       {!isUser && (
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-md shadow-indigo-500/20">
-          <Bot className="h-5 w-5" />
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-yellow-600 text-slate-950 shadow-md shadow-amber-500/10">
+          <Crown className="h-5 w-5" />
         </div>
       )}
 
       <div
         className={`group relative max-w-[85%] sm:max-w-[75%] rounded-2xl px-4 py-3 text-sm shadow-sm transition-all ${
           isUser
-            ? 'bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-br-xs'
+            ? 'bg-gradient-to-r from-amber-600 to-amber-700 text-slate-950 font-medium rounded-br-xs'
             : 'bg-slate-900/80 border border-slate-800 text-slate-100 rounded-bl-xs backdrop-blur-md'
         }`}
       >
         {/* Header label for assistant */}
         {!isUser && (
-          <div className="mb-1.5 flex items-center justify-between text-xs font-semibold text-indigo-400">
-            <span>OwnerHive Assistant</span>
+          <div className="mb-1.5 flex items-center justify-between text-xs font-semibold text-amber-400">
+            <span>Chess AI Assistant</span>
             <button
               onClick={handleCopy}
               className="opacity-0 group-hover:opacity-100 transition-opacity p-1 text-slate-400 hover:text-slate-200 rounded"
@@ -59,13 +59,13 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         {!isUser && message.sources && message.sources.length > 0 && (
           <div className="mt-3 border-t border-slate-800/80 pt-2 text-xs">
             <div className="mb-1 text-slate-400 font-medium flex items-center gap-1">
-              <FileText className="h-3.5 w-3.5 text-indigo-400" /> Referenced Sources:
+              <FileText className="h-3.5 w-3.5 text-amber-400" /> Referenced Sources:
             </div>
             <div className="flex flex-wrap gap-1.5">
               {message.sources.map((src, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-1 rounded-md bg-indigo-950/60 border border-indigo-500/30 px-2 py-0.5 text-[11px] text-indigo-300"
+                  className="inline-flex items-center gap-1 rounded-md bg-amber-950/60 border border-amber-500/30 px-2 py-0.5 text-[11px] text-amber-300"
                 >
                   {src.title} ({Math.round(src.score * 100)}%)
                 </span>
