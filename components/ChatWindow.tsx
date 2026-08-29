@@ -12,7 +12,7 @@ export const ChatWindow: React.FC = () => {
       id: 'welcome-chess',
       role: 'assistant',
       content:
-        "👋 Welcome! I am the Chess Profile AI Assistant for **Jenish Ghimire**.\n\nI can answer questions regarding his FIDE credentials, federation (Nepal), rating (~1686), and show links to his active Lichess and Chess.com gaming profiles. Ask me anything to test the AWS Bedrock integration!",
+        "👋 Welcome! I am the Chess Profile AI Assistant for **Jenish Ghimire**.\n\nAsk me anything about his FIDE ratings, tournament history, Lichess & Chess.com stats.",
       timestamp: new Date().toISOString(),
     },
   ]);
@@ -52,6 +52,7 @@ export const ChatWindow: React.FC = () => {
         role: 'assistant',
         content: data.answer || 'No response returned from assistant endpoint.',
         timestamp: new Date().toISOString(),
+        sources: data.sources || [],
       };
 
       setMessages((prev) => [...prev, assistantMsg]);
@@ -99,7 +100,7 @@ export const ChatWindow: React.FC = () => {
             </h1>
             <p className="text-xs text-slate-400 flex flex-wrap items-center gap-x-3 gap-y-1 mt-0.5">
               <span className="flex items-center gap-1 text-amber-400 font-semibold">
-                <Trophy className="h-3.5 w-3.5" /> Rating: 1686 (NEP)
+                <Trophy className="h-3.5 w-3.5" /> Rating: 1699 (NEP)
               </span>
               <span className="h-3 w-px bg-slate-800 hidden sm:inline"></span>
               <a
@@ -171,9 +172,9 @@ export const ChatWindow: React.FC = () => {
           onSendMessage={handleSendMessage}
           isLoading={isLoading}
           suggestions={[
-            "What is Jenish Ghimire's FIDE rating and ID?",
-            "Show links to Jenish's Chess.com and Lichess profiles.",
-            "Tell me about Jenish's federation.",
+            "What is Jenish's highest rating format on Lichess?",
+            "What is Jenish's FIDE rating history and progression?",
+            "What are Jenish's Chess.com stats and username?",
           ]}
         />
       </footer>

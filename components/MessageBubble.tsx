@@ -1,6 +1,8 @@
 'use client';
 
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Crown, User, FileText, Check, Copy } from 'lucide-react';
 import { ChatMessage } from '@/lib/llm';
 
@@ -39,7 +41,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       >
         {/* Header label for assistant */}
         {!isUser && (
-          <div className="mb-1.5 flex items-center justify-between text-xs font-semibold text-amber-400">
+          <div className="mb-2 flex items-center justify-between text-xs font-semibold text-amber-400 border-b border-slate-800/60 pb-1">
             <span>Chess AI Assistant</span>
             <button
               onClick={handleCopy}
@@ -51,21 +53,81 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
           </div>
         )}
 
-        <div className="whitespace-pre-wrap leading-relaxed text-slate-100">
-          {message.content}
+        {/* Formatted Markdown Content */}
+        <div className="text-slate-100 text-sm leading-relaxed overflow-hidden">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              p: ({ children }) => <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>,
+              strong: ({ children }) => (
+                <strong className="font-semibold text-amber-300">{children}</strong>
+              ),
+              ul: ({ children }) => (
+                <ul className="list-disc list-outside pl-5 mb-2.5 space-y-1">{children}</ul>
+              ),
+              ol: ({ children }) => (
+                <ol className="list-decimal list-outside pl-5 mb-2.5 space-y-1">{children}</ol>
+              ),
+              li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+              h1: ({ children }) => (
+                <h1 className="font-bold text-base text-amber-400 mt-3 mb-1.5">{children}</h1>
+              ),
+              h2: ({ children }) => (
+                <h2 className="font-bold text-sm text-amber-400 mt-2.5 mb-1">{children}</h2>
+              ),
+              h3: ({ children }) => (
+                <h3 className="font-semibold text-sm text-amber-300 mt-2 mb-1">{children}</h3>
+              ),
+              blockquote: ({ children }) => (
+                <blockquote className="border-l-2 border-amber-500/50 pl-3 italic text-slate-400 my-2">
+                  {children}
+                </blockquote>
+              ),
+              code: ({ children }) => (
+                <code className="bg-slate-950/80 text-amber-300 px-1.5 py-0.5 rounded text-xs font-mono border border-slate-800">
+                  {children}
+                </code>
+              ),
+              table: ({ children }) => (
+                <div className="overflow-x-auto my-2.5 rounded-lg border border-slate-800">
+                  <table className="min-w-full text-xs text-left">{children}</table>
+                </div>
+              ),
+              thead: ({ children }) => <thead className="bg-slate-950/60 text-amber-400">{children}</thead>,
+              th: ({ children }) => (
+                <th className="px-3 py-1.5 font-semibold border-b border-slate-800">{children}</th>
+              ),
+              td: ({ children }) => (
+                <td className="px-3 py-1.5 border-b border-slate-800/60 text-slate-200">{children}</td>
+              ),
+              a: ({ href, children }) => (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-400 underline hover:text-amber-300 transition-colors"
+                >
+                  {children}
+                </a>
+              ),
+            }}
+          >
+            {message.content}
+          </ReactMarkdown>
         </div>
 
-        {/* Source attribution preview (for RAG context in future stages) */}
+        {/* Source attribution preview */}
         {!isUser && message.sources && message.sources.length > 0 && (
           <div className="mt-3 border-t border-slate-800/80 pt-2 text-xs">
-            <div className="mb-1 text-slate-400 font-medium flex items-center gap-1">
-              <FileText className="h-3.5 w-3.5 text-amber-400" /> Referenced Sources:
+            <div className="mb-1.5 text-slate-400 font-medium flex items-center gap-1">
+              <FileText className="h-3.5 w-3.5 text-amber-400" /> Referenced Knowledge Sources:
             </div>
             <div className="flex flex-wrap gap-1.5">
               {message.sources.map((src, idx) => (
                 <span
                   key={idx}
                   className="inline-flex items-center gap-1 rounded-md bg-amber-950/60 border border-amber-500/30 px-2 py-0.5 text-[11px] text-amber-300"
+                  title={src.snippet}
                 >
                   {src.title} ({Math.round(src.score * 100)}%)
                 </span>
@@ -75,8 +137,8 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         )}
 
         <div
-          className={`mt-1 text-[10px] ${
-            isUser ? 'text-indigo-200 text-right' : 'text-slate-500'
+          className={`mt-1.5 text-[10px] ${
+            isUser ? 'text-slate-900 text-right font-medium' : 'text-slate-500'
           }`}
         >
           {new Date(message.timestamp).toLocaleTimeString([], {

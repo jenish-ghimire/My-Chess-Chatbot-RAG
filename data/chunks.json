@@ -360,7 +360,7 @@
     "id": "03_lichess_profile.md#chunk-1",
     "documentName": "03_lichess_profile.md",
     "chunkIndex": 2,
-    "content": "## Profile Identity\n\n| Field | Value |\n|---|---|\n| **Username** | jenishghimire |\n| **Display Name** | jenishghimire |\n| **Profile URL** | https://lichess.org/@/jenishghimire |\n| **Member Since** | July 2, 2020 |\n| **Account Status** | Active |\n| **Total Games Played** | 3,145 |\n| **Total Time Spent Playing** | 14 days, 15 hours |\n| **Tournament Points** | 2,102 |\n\n---",
+    "content": "## Profile Identity",
     "metadata": {
       "source": "03_lichess_profile.md",
       "fileType": "markdown",
@@ -375,14 +375,14 @@
     "id": "03_lichess_profile.md#chunk-2",
     "documentName": "03_lichess_profile.md",
     "chunkIndex": 3,
-    "content": "## Current Lichess Ratings (as of August 2026)",
+    "content": "## Profile Identity\n| Field                        | Value                               |\n| ---------------------------- | ----------------------------------- |\n| **Username**                 | jenishghimire                       |\n| **Display Name**             | jenishghimire                       |\n| **Profile URL**              | https://lichess.org/@/jenishghimire |\n| **Member Since**             | July 2, 2020                        |",
     "metadata": {
       "source": "03_lichess_profile.md",
       "fileType": "markdown",
-      "sectionTitle": "Current Lichess Ratings (as of August 2026)",
+      "sectionTitle": "Profile Identity",
       "headingHierarchy": [
         "Jenish Ghimire — Lichess Profile",
-        "Current Lichess Ratings (as of August 2026)"
+        "Profile Identity"
       ]
     }
   },
@@ -390,14 +390,14 @@
     "id": "03_lichess_profile.md#chunk-3",
     "documentName": "03_lichess_profile.md",
     "chunkIndex": 4,
-    "content": "## Current Lichess Ratings (as of August 2026)\n| Format | Rating | Games Played | Notes |\n|---|---|---|---|\n| **Bullet** | 2011 | 763 | Confirmed rating |\n| **Blitz** | 1944 | 1,546 | Confirmed rating; Global Rank: #80,769 |\n| **Rapid** | 2105 | 656 | Confirmed rating (highest format) |\n| **Classical** | Provisional | 6 | Too few games for a stable rating |\n| **UltraBullet** | 1250 (Provisional) | 25 | Too few games for a stable rating |",
+    "content": "[Section: Profile Identity]\n| **Account Status**           | Active                              |\n| **Total Games Played**       | 3,145                               |\n| **Total Time Spent Playing** | 14 days, 15 hours                   |\n| **Tournament Points**        | 2,102                               |",
     "metadata": {
       "source": "03_lichess_profile.md",
       "fileType": "markdown",
-      "sectionTitle": "Current Lichess Ratings (as of August 2026)",
+      "sectionTitle": "Profile Identity",
       "headingHierarchy": [
         "Jenish Ghimire — Lichess Profile",
-        "Current Lichess Ratings (as of August 2026)"
+        "Profile Identity"
       ]
     }
   },
@@ -405,7 +405,7 @@
     "id": "03_lichess_profile.md#chunk-4",
     "documentName": "03_lichess_profile.md",
     "chunkIndex": 5,
-    "content": "[Section: Current Lichess Ratings (as of August 2026)]\n| **Correspondence** | Provisional | 1 | Only 1 game played |",
+    "content": "## Current Lichess Ratings (as of August 2026)",
     "metadata": {
       "source": "03_lichess_profile.md",
       "fileType": "markdown",
@@ -420,7 +420,37 @@
     "id": "03_lichess_profile.md#chunk-5",
     "documentName": "03_lichess_profile.md",
     "chunkIndex": 6,
-    "content": "### Puzzle Ratings\n\n| Category | Rating / Score |\n|---|---|\n| **Puzzles (Tactics)** | 2433 |\n| **Puzzle Storm** | 0 |\n| **Puzzle Racer** | 0 |\n| **Puzzle Streak** | 0 |\n\n---",
+    "content": "## Current Lichess Ratings (as of August 2026)\n| Format             | Rating             | Games Played | Notes                                 |\n| ------------------ | ------------------ | ------------ | ------------------------------------- |\n| **Bullet**         | 2011               | 763          | Confirmed rating                      |\n| **Blitz**          | 1944               | 1,546        | Confirmed rating; Global Rank:#80,769 |",
+    "metadata": {
+      "source": "03_lichess_profile.md",
+      "fileType": "markdown",
+      "sectionTitle": "Current Lichess Ratings (as of August 2026)",
+      "headingHierarchy": [
+        "Jenish Ghimire — Lichess Profile",
+        "Current Lichess Ratings (as of August 2026)"
+      ]
+    }
+  },
+  {
+    "id": "03_lichess_profile.md#chunk-6",
+    "documentName": "03_lichess_profile.md",
+    "chunkIndex": 7,
+    "content": "[Section: Current Lichess Ratings (as of August 2026)]\n| **Rapid**          | 2105               | 656          | Confirmed rating (highest format)     |\n| **Classical**      | Provisional        | 6            | Too few games for a stable rating     |\n| **UltraBullet**    | 1250 (Provisional) | 25           | Too few games for a stable rating     |\n| **Correspondence** | Provisional        | 1            | Only 1 game played                    |",
+    "metadata": {
+      "source": "03_lichess_profile.md",
+      "fileType": "markdown",
+      "sectionTitle": "Current Lichess Ratings (as of August 2026)",
+      "headingHierarchy": [
+        "Jenish Ghimire — Lichess Profile",
+        "Current Lichess Ratings (as of August 2026)"
+      ]
+    }
+  },
+  {
+    "id": "03_lichess_profile.md#chunk-7",
+    "documentName": "03_lichess_profile.md",
+    "chunkIndex": 8,
+    "content": "### Puzzle Ratings\n\n| Category              | Rating / Score |\n| --------------------- | -------------- |\n| **Puzzles (Tactics)** | 2433           |\n| **Puzzle Storm**      | 0              |\n| **Puzzle Racer**      | 0              |\n| **Puzzle Streak**     | 0              |\n\n---",
     "metadata": {
       "source": "03_lichess_profile.md",
       "fileType": "markdown",
@@ -433,9 +463,9 @@
     }
   },
   {
-    "id": "03_lichess_profile.md#chunk-6",
+    "id": "03_lichess_profile.md#chunk-8",
     "documentName": "03_lichess_profile.md",
-    "chunkIndex": 7,
+    "chunkIndex": 9,
     "content": "## Lichess Format Breakdown",
     "metadata": {
       "source": "03_lichess_profile.md",
@@ -448,50 +478,18 @@
     }
   },
   {
-    "id": "03_lichess_profile.md#chunk-7",
-    "documentName": "03_lichess_profile.md",
-    "chunkIndex": 8,
-    "content": "### Bullet (Under 3 minutes)\n- **Rating:** 2011\n- **Games:** 763\n- A rating of 2011 in Bullet on Lichess is strong, placing Jenish comfortably above the average player.",
-    "metadata": {
-      "source": "03_lichess_profile.md",
-      "fileType": "markdown",
-      "sectionTitle": "Bullet (Under 3 minutes)",
-      "headingHierarchy": [
-        "Jenish Ghimire — Lichess Profile",
-        "Lichess Format Breakdown",
-        "Bullet (Under 3 minutes)"
-      ]
-    }
-  },
-  {
-    "id": "03_lichess_profile.md#chunk-8",
-    "documentName": "03_lichess_profile.md",
-    "chunkIndex": 9,
-    "content": "### Blitz (3–8 minutes)\n- **Rating:** 1944\n- **Games:** 1,546 — his most-played format on Lichess\n- **Global Blitz Rank:** #80,769\n- Blitz is clearly Jenish's most active format on Lichess, with nearly half of all his games in this category.",
-    "metadata": {
-      "source": "03_lichess_profile.md",
-      "fileType": "markdown",
-      "sectionTitle": "Blitz (3–8 minutes)",
-      "headingHierarchy": [
-        "Jenish Ghimire — Lichess Profile",
-        "Lichess Format Breakdown",
-        "Blitz (3–8 minutes)"
-      ]
-    }
-  },
-  {
     "id": "03_lichess_profile.md#chunk-9",
     "documentName": "03_lichess_profile.md",
     "chunkIndex": 10,
-    "content": "### Rapid (8–25 minutes)\n- **Rating:** 2105\n- **Games:** 656\n- Rapid is his strongest format by rating. A 2105 Rapid on Lichess is a solid level, reflecting his measured, positional play.",
+    "content": "### Bullet\n\n- **Rating:** 2011\n- **Games:** 763\n- A rating of 2011 in Bullet on Lichess is strong, placing Jenish comfortably above the average player.",
     "metadata": {
       "source": "03_lichess_profile.md",
       "fileType": "markdown",
-      "sectionTitle": "Rapid (8–25 minutes)",
+      "sectionTitle": "Bullet",
       "headingHierarchy": [
         "Jenish Ghimire — Lichess Profile",
         "Lichess Format Breakdown",
-        "Rapid (8–25 minutes)"
+        "Bullet"
       ]
     }
   },
@@ -499,7 +497,39 @@
     "id": "03_lichess_profile.md#chunk-10",
     "documentName": "03_lichess_profile.md",
     "chunkIndex": 11,
-    "content": "### Puzzles\n- **Rating:** 2433\n- This is notably high — a puzzle rating of 2433 indicates strong tactical pattern recognition, significantly above his playing rating. This suggests he actively studies tactics.\n\n---",
+    "content": "### Blitz\n\n- **Rating:** 1944\n- **Games:** 1,546 — his most-played format on Lichess\n- **Global Blitz Rank:** #80,769\n- Blitz is clearly Jenish's most active format on Lichess, with nearly half of all his games in this category.",
+    "metadata": {
+      "source": "03_lichess_profile.md",
+      "fileType": "markdown",
+      "sectionTitle": "Blitz",
+      "headingHierarchy": [
+        "Jenish Ghimire — Lichess Profile",
+        "Lichess Format Breakdown",
+        "Blitz"
+      ]
+    }
+  },
+  {
+    "id": "03_lichess_profile.md#chunk-11",
+    "documentName": "03_lichess_profile.md",
+    "chunkIndex": 12,
+    "content": "### Rapid\n\n- **Rating:** 2105\n- **Games:** 656\n- Rapid is his strongest format by rating. A 2105 Rapid on Lichess is a solid level, reflecting his measured, positional play.",
+    "metadata": {
+      "source": "03_lichess_profile.md",
+      "fileType": "markdown",
+      "sectionTitle": "Rapid",
+      "headingHierarchy": [
+        "Jenish Ghimire — Lichess Profile",
+        "Lichess Format Breakdown",
+        "Rapid"
+      ]
+    }
+  },
+  {
+    "id": "03_lichess_profile.md#chunk-12",
+    "documentName": "03_lichess_profile.md",
+    "chunkIndex": 13,
+    "content": "### Puzzles\n\n- **Rating:** 2433\n- This is notably high — a puzzle rating of 2433 indicates strong tactical pattern recognition, significantly above his playing rating. This suggests he actively studies tactics.\n\n---",
     "metadata": {
       "source": "03_lichess_profile.md",
       "fileType": "markdown",
@@ -512,9 +542,9 @@
     }
   },
   {
-    "id": "03_lichess_profile.md#chunk-11",
+    "id": "03_lichess_profile.md#chunk-13",
     "documentName": "03_lichess_profile.md",
-    "chunkIndex": 12,
+    "chunkIndex": 14,
     "content": "## Activity Overview\n\n- **Total games:** 3,145 since joining in July 2020\n- **Time on the board:** Over 14 days (336+ hours) of active play time\n- **Most active format:** Blitz (1,546 games = ~49% of all games)\n- **Second most active:** Bullet (763 games = ~24% of all games)\n- **Third most active:** Rapid (656 games = ~21% of all games)",
     "metadata": {
       "source": "03_lichess_profile.md",
@@ -527,10 +557,10 @@
     }
   },
   {
-    "id": "03_lichess_profile.md#chunk-12",
+    "id": "03_lichess_profile.md#chunk-14",
     "documentName": "03_lichess_profile.md",
-    "chunkIndex": 13,
-    "content": "### Game Distribution\n\n| Format | Games | % of Total |\n|---|---|---|\n| Blitz | 1,546 | 49.2% |\n| Bullet | 763 | 24.3% |\n| Rapid | 656 | 20.9% |\n| UltraBullet | 25 | 0.8% |\n| Classical | 6 | 0.2% |\n| Correspondence | 1 | 0.03% |\n\n---",
+    "chunkIndex": 15,
+    "content": "### Game Distribution\n\n| Format         | Games | % of Total |\n| -------------- | ----- | ---------- |\n| Blitz          | 1,546 | 49.2%      |\n| Bullet         | 763   | 24.3%      |\n| Rapid          | 656   | 20.9%      |\n| UltraBullet    | 25    | 0.8%       |\n| Classical      | 6     | 0.2%       |\n| Correspondence | 1     | 0.03%      |\n\n---",
     "metadata": {
       "source": "03_lichess_profile.md",
       "fileType": "markdown",
@@ -543,10 +573,10 @@
     }
   },
   {
-    "id": "03_lichess_profile.md#chunk-13",
+    "id": "03_lichess_profile.md#chunk-15",
     "documentName": "03_lichess_profile.md",
-    "chunkIndex": 14,
-    "content": "## Lichess vs FIDE Rating Comparison\n\n| Format | Lichess Rating | FIDE Rating | Difference |\n|---|---|---|---|\n| Rapid | 2105 | 1670 | +435 (Lichess higher) |\n| Blitz | 1944 | 1741 | +203 (Lichess higher) |\n| Bullet | 2011 | N/A | — |\n\n> **Important context:** Lichess uses the Glicko-2 rating system, while FIDE uses the Elo system. Lichess ratings are generally 100–400 points higher than equivalent FIDE ratings. This is normal and expected — they are not directly comparable numbers.\n\n---",
+    "chunkIndex": 16,
+    "content": "## Lichess vs FIDE Rating Comparison\n\n| Format | Lichess Rating | FIDE Rating | Difference            |\n| ------ | -------------- | ----------- | --------------------- |\n| Rapid  | 2105           | 1670        | +435 (Lichess higher) |\n| Blitz  | 1944           | 1741        | +203 (Lichess higher) |\n| Bullet | 2011           | N/A         | —                     |",
     "metadata": {
       "source": "03_lichess_profile.md",
       "fileType": "markdown",
@@ -558,9 +588,24 @@
     }
   },
   {
-    "id": "03_lichess_profile.md#chunk-14",
+    "id": "03_lichess_profile.md#chunk-16",
     "documentName": "03_lichess_profile.md",
-    "chunkIndex": 15,
+    "chunkIndex": 17,
+    "content": "[Section: Lichess vs FIDE Rating Comparison]\n> **Important context:** Lichess uses the Glicko-2 rating system, while FIDE uses the Elo system. Lichess ratings are generally 100–400 points higher than equivalent FIDE ratings. This is normal and expected — they are not directly comparable numbers.\n\n---",
+    "metadata": {
+      "source": "03_lichess_profile.md",
+      "fileType": "markdown",
+      "sectionTitle": "Lichess vs FIDE Rating Comparison",
+      "headingHierarchy": [
+        "Jenish Ghimire — Lichess Profile",
+        "Lichess vs FIDE Rating Comparison"
+      ]
+    }
+  },
+  {
+    "id": "03_lichess_profile.md#chunk-17",
+    "documentName": "03_lichess_profile.md",
+    "chunkIndex": 18,
     "content": "## Common Questions About Lichess\n\n**Q: What is Jenish's Lichess username?**\nA: jenishghimire\n\n**Q: What is Jenish's Lichess Rapid rating?**\nA: 2105 (as of August 2026)\n\n**Q: What is Jenish's Lichess Blitz rating?**\nA: 1944 (as of August 2026)\n\n**Q: What is Jenish's Lichess Bullet rating?**\nA: 2011 (as of August 2026)\n\n**Q: How many games has Jenish played on Lichess?**\nA: 3,145 total games since joining on July 2, 2020.",
     "metadata": {
       "source": "03_lichess_profile.md",
@@ -573,9 +618,9 @@
     }
   },
   {
-    "id": "03_lichess_profile.md#chunk-15",
+    "id": "03_lichess_profile.md#chunk-18",
     "documentName": "03_lichess_profile.md",
-    "chunkIndex": 16,
+    "chunkIndex": 19,
     "content": "[Section: Common Questions About Lichess]\n**Q: What is Jenish's puzzle rating on Lichess?**\nA: 2433 — a very strong tactical rating.\n\n**Q: What is Jenish's most-played format on Lichess?**\nA: Blitz, with 1,546 games (about 49% of all games played).\n\n**Q: When did Jenish join Lichess?**\nA: July 2, 2020.\n\n**Q: How long has Jenish spent playing chess on Lichess?**\nA: Over 14 days and 15 hours of total playing time.",
     "metadata": {
       "source": "03_lichess_profile.md",
@@ -588,9 +633,9 @@
     }
   },
   {
-    "id": "03_lichess_profile.md#chunk-16",
+    "id": "03_lichess_profile.md#chunk-19",
     "documentName": "03_lichess_profile.md",
-    "chunkIndex": 17,
+    "chunkIndex": 20,
     "content": "[Section: Common Questions About Lichess]\n**Q: Is Jenish's Lichess rating higher than his FIDE rating?**\nA: Yes. Lichess ratings are generally higher than FIDE Elo ratings due to different rating systems (Glicko-2 vs Elo). A difference of 200–400 points between Lichess and FIDE is completely normal.",
     "metadata": {
       "source": "03_lichess_profile.md",

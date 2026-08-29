@@ -2,60 +2,64 @@
 
 ## Profile Identity
 
-| Field | Value |
-|---|---|
-| **Username** | jenishghimire |
-| **Display Name** | jenishghimire |
-| **Profile URL** | https://lichess.org/@/jenishghimire |
-| **Member Since** | July 2, 2020 |
-| **Account Status** | Active |
-| **Total Games Played** | 3,145 |
-| **Total Time Spent Playing** | 14 days, 15 hours |
-| **Tournament Points** | 2,102 |
+| Field                        | Value                               |
+| ---------------------------- | ----------------------------------- |
+| **Username**                 | jenishghimire                       |
+| **Display Name**             | jenishghimire                       |
+| **Profile URL**              | https://lichess.org/@/jenishghimire |
+| **Member Since**             | July 2, 2020                        |
+| **Account Status**           | Active                              |
+| **Total Games Played**       | 3,145                               |
+| **Total Time Spent Playing** | 14 days, 15 hours                   |
+| **Tournament Points**        | 2,102                               |
 
 ---
 
 ## Current Lichess Ratings (as of August 2026)
 
-| Format | Rating | Games Played | Notes |
-|---|---|---|---|
-| **Bullet** | 2011 | 763 | Confirmed rating |
-| **Blitz** | 1944 | 1,546 | Confirmed rating; Global Rank: #80,769 |
-| **Rapid** | 2105 | 656 | Confirmed rating (highest format) |
-| **Classical** | Provisional | 6 | Too few games for a stable rating |
-| **UltraBullet** | 1250 (Provisional) | 25 | Too few games for a stable rating |
-| **Correspondence** | Provisional | 1 | Only 1 game played |
+| Format             | Rating             | Games Played | Notes                                 |
+| ------------------ | ------------------ | ------------ | ------------------------------------- |
+| **Bullet**         | 2011               | 763          | Confirmed rating                      |
+| **Blitz**          | 1944               | 1,546        | Confirmed rating; Global Rank:#80,769 |
+| **Rapid**          | 2105               | 656          | Confirmed rating (highest format)     |
+| **Classical**      | Provisional        | 6            | Too few games for a stable rating     |
+| **UltraBullet**    | 1250 (Provisional) | 25           | Too few games for a stable rating     |
+| **Correspondence** | Provisional        | 1            | Only 1 game played                    |
 
 ### Puzzle Ratings
 
-| Category | Rating / Score |
-|---|---|
-| **Puzzles (Tactics)** | 2433 |
-| **Puzzle Storm** | 0 |
-| **Puzzle Racer** | 0 |
-| **Puzzle Streak** | 0 |
+| Category              | Rating / Score |
+| --------------------- | -------------- |
+| **Puzzles (Tactics)** | 2433           |
+| **Puzzle Storm**      | 0              |
+| **Puzzle Racer**      | 0              |
+| **Puzzle Streak**     | 0              |
 
 ---
 
 ## Lichess Format Breakdown
 
-### Bullet (Under 3 minutes)
+### Bullet
+
 - **Rating:** 2011
 - **Games:** 763
 - A rating of 2011 in Bullet on Lichess is strong, placing Jenish comfortably above the average player.
 
-### Blitz (3–8 minutes)
+### Blitz
+
 - **Rating:** 1944
 - **Games:** 1,546 — his most-played format on Lichess
 - **Global Blitz Rank:** #80,769
 - Blitz is clearly Jenish's most active format on Lichess, with nearly half of all his games in this category.
 
-### Rapid (8–25 minutes)
+### Rapid
+
 - **Rating:** 2105
 - **Games:** 656
 - Rapid is his strongest format by rating. A 2105 Rapid on Lichess is a solid level, reflecting his measured, positional play.
 
 ### Puzzles
+
 - **Rating:** 2433
 - This is notably high — a puzzle rating of 2433 indicates strong tactical pattern recognition, significantly above his playing rating. This suggests he actively studies tactics.
 
@@ -71,24 +75,24 @@
 
 ### Game Distribution
 
-| Format | Games | % of Total |
-|---|---|---|
-| Blitz | 1,546 | 49.2% |
-| Bullet | 763 | 24.3% |
-| Rapid | 656 | 20.9% |
-| UltraBullet | 25 | 0.8% |
-| Classical | 6 | 0.2% |
-| Correspondence | 1 | 0.03% |
+| Format         | Games | % of Total |
+| -------------- | ----- | ---------- |
+| Blitz          | 1,546 | 49.2%      |
+| Bullet         | 763   | 24.3%      |
+| Rapid          | 656   | 20.9%      |
+| UltraBullet    | 25    | 0.8%       |
+| Classical      | 6     | 0.2%       |
+| Correspondence | 1     | 0.03%      |
 
 ---
 
 ## Lichess vs FIDE Rating Comparison
 
-| Format | Lichess Rating | FIDE Rating | Difference |
-|---|---|---|---|
-| Rapid | 2105 | 1670 | +435 (Lichess higher) |
-| Blitz | 1944 | 1741 | +203 (Lichess higher) |
-| Bullet | 2011 | N/A | — |
+| Format | Lichess Rating | FIDE Rating | Difference            |
+| ------ | -------------- | ----------- | --------------------- |
+| Rapid  | 2105           | 1670        | +435 (Lichess higher) |
+| Blitz  | 1944           | 1741        | +203 (Lichess higher) |
+| Bullet | 2011           | N/A         | —                     |
 
 > **Important context:** Lichess uses the Glicko-2 rating system, while FIDE uses the Elo system. Lichess ratings are generally 100–400 points higher than equivalent FIDE ratings. This is normal and expected — they are not directly comparable numbers.
 

@@ -23,68 +23,65 @@ export interface LLMResponse {
   };
 }
 
-// System prompt grounding the model in Jenish Ghimire's Chess Career
-const SYSTEM_PROMPT = `You are a helpful, professional, and friendly Chess AI Assistant dedicated to the chess profile and career of Jenish Ghimire.
-Your goal is to answer queries about his FIDE profile, chess ratings, Chess.com and Lichess stats, and games.
+let bedrockClient: BedrockRuntimeClient | null = null;
 
-Knowledge Base:
-- Name: Jenish Ghimire
-- FIDE ID: 12328421
-- FIDE Profile: https://ratings.fide.com/profile/12328421
-- Chess Federation: Nepal (NEP)
-- FIDE Rating: ~1686
-- Chess.com Username: jenishghimirechess (Profile: https://www.chess.com/member/jenishghimirechess)
-- Lichess Username: jenishghimire (Profile: https://lichess.org/@/jenishghimire)
-
-Guidelines:
-1. Always be polite, helpful, and reference chess concepts accurately.
-2. If asked about information not in this knowledge base, answer based on your general knowledge if related to chess, or mention that specific details will be available in future RAG stages.
-3. Keep responses clear and well-structured. Use markdown bullet points or tables where appropriate.`;
-
-export async function generateResponse(prompt: string, history: ChatMessage[] = []): Promise<LLMResponse> {
+function getBedrockClient(): BedrockRuntimeClient {
   const region = process.env.AWS_REGION || 'us-east-1';
   const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
   const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
-  const modelId = process.env.BEDROCK_MODEL_ID || 'meta.llama3-1-8b-instruct-v1:0';
+
+  if (!accessKeyId || !secretAccessKey) {
+    throw new Error('AWS credentials missing.');
+  }
+
+  if (!bedrockClient) {
+    bedrockClient = new BedrockRuntimeClient({
+      region,
+      credentials: { accessKeyId, secretAccessKey },
+    });
+  }
+  return bedrockClient;
+}
+
+/**
+ * Generates a response from the LLM using a provided system prompt.
+ * In Stage 5, the system prompt comes from the RAG pipeline (with retrieved context injected).
+ */
+export async function generateResponse(
+  prompt: string,
+  history: ChatMessage[] = [],
+  systemPrompt?: string
+): Promise<LLMResponse> {
+  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+  const modelId = process.env.BEDROCK_MODEL_ID || 'us.meta.llama3-1-8b-instruct-v1:0';
 
   // If AWS credentials are not set, return a helpful setup response
   if (!accessKeyId || !secretAccessKey) {
     return {
-      answer: `👋 Welcome! I am your Chess AI Assistant.
-
-It looks like your AWS Bedrock credentials are not fully configured in your \`.env\` file yet. 
-
-To connect me to AWS Bedrock:
-1. Open the [\`.env\`](file:///d:/Basic%20RAG%20Chatbot/.env) file.
-2. Add your **AWS Access Key ID** and **Secret Access Key**.
-3. Save the file.
-
-*Currently running in Local Mock Mode. Test question: "${prompt}"*`,
+      answer: `👋 Welcome! I am your Chess AI Assistant.\n\nAWS Bedrock credentials are not configured. Add them to your \`.env\` file.\n\n*Currently running in Local Mock Mode.*`,
       provider: 'mock',
       model: 'local-mock-client',
     };
   }
 
-  try {
-    const client = new BedrockRuntimeClient({
-      region,
-      credentials: {
-        accessKeyId,
-        secretAccessKey,
-      },
-    });
+  // Use provided system prompt (from RAG pipeline) or fall back to a default
+  const finalSystemPrompt =
+    systemPrompt ||
+    `You are the official Chess AI Assistant exclusively dedicated to the chess profile, ratings, and career of Jenish Ghimire. If asked questions unrelated to chess or Jenish, decline politely and invite the user to ask about Jenish's chess profile instead.`;
 
+  try {
+    const client = getBedrockClient();
     let requestBody: string;
 
     // Support both Claude (Anthropic) and Llama 3/3.1 (Meta) payloads
     if (modelId.includes('meta.llama')) {
-      // Build Llama 3 chat template prompt
-      let promptText = `<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n${SYSTEM_PROMPT}<|eot_id|>\n`;
-      
+      let promptText = `<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n${finalSystemPrompt}<|eot_id|>\n`;
+
       for (const msg of history) {
         promptText += `<|start_header_id|>${msg.role}<|end_header_id|>\n\n${msg.content}<|eot_id|>\n`;
       }
-      
+
       promptText += `<|start_header_id|>user<|end_header_id|>\n\n${prompt}<|eot_id|>\n<|start_header_id|>assistant<|end_header_id|>\n\n`;
 
       requestBody = JSON.stringify({
@@ -100,39 +97,34 @@ To connect me to AWS Bedrock:
           role: msg.role === 'assistant' ? ('assistant' as const) : ('user' as const),
           content: msg.content,
         })),
-        {
-          role: 'user' as const,
-          content: prompt,
-        },
+        { role: 'user' as const, content: prompt },
       ];
 
       requestBody = JSON.stringify({
         anthropic_version: 'bedrock-2023-05-31',
         max_tokens: 1024,
-        system: SYSTEM_PROMPT,
+        system: finalSystemPrompt,
         messages: messagesPayload,
         temperature: 0.7,
       });
     }
 
-    const input = {
+    const command = new InvokeModelCommand({
       modelId,
       contentType: 'application/json',
       accept: 'application/json',
       body: requestBody,
-    };
+    });
 
-    const command = new InvokeModelCommand(input);
     const response = await client.send(command);
-
     const decoder = new TextDecoder('utf-8');
     const responseBody = JSON.parse(decoder.decode(response.body));
 
     let answer: string;
     if (modelId.includes('meta.llama')) {
-      answer = responseBody.generation || 'No response content generated by Llama model.';
+      answer = responseBody.generation || 'No response content generated.';
     } else {
-      answer = responseBody.content?.[0]?.text || 'No response content generated by Claude model.';
+      answer = responseBody.content?.[0]?.text || 'No response content generated.';
     }
 
     return {
@@ -143,12 +135,7 @@ To connect me to AWS Bedrock:
   } catch (error: any) {
     console.error('Error invoking AWS Bedrock model:', error);
     return {
-      answer: `⚠️ Error invoking AWS Bedrock (${error.message || 'Unknown error'}). 
-
-Please verify:
-1. Your AWS credentials are correct.
-2. You have requested and been granted model access for \`${modelId}\` in the AWS Bedrock Console.
-3. Your region is correct (currently \`${region}\`).`,
+      answer: `⚠️ Error invoking AWS Bedrock (${error.message || 'Unknown error'}). Please verify your credentials and model access.`,
       provider: 'mock',
       model: 'error-fallback',
     };
