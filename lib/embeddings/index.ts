@@ -11,9 +11,9 @@ let bedrockClient: BedrockRuntimeClient | null = null;
 
 function getBedrockClient(): BedrockRuntimeClient {
   if (!bedrockClient) {
-    const region = process.env.AWS_REGION || 'us-east-1';
-    const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-    const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+    const region = process.env.MY_AWS_REGION || process.env.AWS_REGION || 'us-east-1';
+    const accessKeyId = process.env.MY_AWS_ACCESS_KEY_ID || process.env.AWS_ACCESS_KEY_ID;
+    const secretAccessKey = process.env.MY_AWS_SECRET_ACCESS_KEY || process.env.AWS_SECRET_ACCESS_KEY;
 
     if (!accessKeyId || !secretAccessKey) {
       throw new Error('AWS credentials missing. Set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env file.');

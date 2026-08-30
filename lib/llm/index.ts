@@ -26,9 +26,9 @@ export interface LLMResponse {
 let bedrockClient: BedrockRuntimeClient | null = null;
 
 function getBedrockClient(): BedrockRuntimeClient {
-  const region = process.env.AWS_REGION || 'us-east-1';
-  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+  const region = process.env.MY_AWS_REGION || process.env.AWS_REGION || 'us-east-1';
+  const accessKeyId = process.env.MY_AWS_ACCESS_KEY_ID || process.env.AWS_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.MY_AWS_SECRET_ACCESS_KEY || process.env.AWS_SECRET_ACCESS_KEY;
 
   if (!accessKeyId || !secretAccessKey) {
     throw new Error('AWS credentials missing.');
@@ -52,8 +52,8 @@ export async function generateResponse(
   history: ChatMessage[] = [],
   systemPrompt?: string
 ): Promise<LLMResponse> {
-  const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+  const accessKeyId = process.env.MY_AWS_ACCESS_KEY_ID || process.env.AWS_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.MY_AWS_SECRET_ACCESS_KEY || process.env.AWS_SECRET_ACCESS_KEY;
   const modelId = process.env.BEDROCK_MODEL_ID || 'us.meta.llama3-1-8b-instruct-v1:0';
 
   // If AWS credentials are not set, return a helpful setup response
