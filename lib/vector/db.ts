@@ -84,8 +84,26 @@ export async function initSchema(): Promise<void> {
       WITH (lists = 50)
     `);
 
+    // Create chat_logs table for visitor analytics
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS chat_logs (
+        id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        session_id        TEXT,
+        user_query        TEXT NOT NULL,
+        assistant_answer  TEXT NOT NULL,
+        sources_cited     JSONB DEFAULT '[]',
+        chunks_retrieved  INTEGER DEFAULT 0,
+        search_time_ms    INTEGER,
+        response_time_ms  INTEGER,
+        provider          TEXT,
+        model             TEXT,
+        user_agent        TEXT,
+        created_at        TIMESTAMPTZ DEFAULT NOW()
+      )
+    `);
+
     await client.query('COMMIT');
-    console.log('✓ PostgreSQL schema initialized (chess_chunks table ready)');
+    console.log('✓ PostgreSQL schema initialized (chess_chunks + chat_logs tables ready)');
   } catch (err) {
     await client.query('ROLLBACK');
     throw err;
@@ -176,6 +194,63 @@ export async function getChunkCount(): Promise<number> {
   const db = getPool();
   const result = await db.query('SELECT COUNT(*) FROM chess_chunks');
   return parseInt(result.rows[0].count, 10);
+}
+
+/**
+ * Log a chat interaction to the chat_logs table for analytics.
+ * Runs asynchronously — does not block the API response.
+ */
+export interface ChatLogEntry {
+  sessionId?: string;
+  userQuery: string;
+  assistantAnswer: string;
+  sourcesCited?: Array<{ title: string; score: number }>;
+  chunksRetrieved?: number;
+  searchTimeMs?: number;
+  responseTimeMs?: number;
+  provider?: string;
+  model?: string;
+  userAgent?: string;
+}
+
+export async function logChatInteraction(entry: ChatLogEntry): Promise<void> {
+  try {
+    const db = getPool();
+    await db.query(
+      `INSERT INTO chat_logs (
+        session_id, user_query, assistant_answer, sources_cited,
+        chunks_retrieved, search_time_ms, response_time_ms,
+        provider, model, user_agent
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+      [
+        entry.sessionId || null,
+        entry.userQuery,
+        entry.assistantAnswer,
+        JSON.stringify(entry.sourcesCited || []),
+        entry.chunksRetrieved || 0,
+        entry.searchTimeMs || null,
+        entry.responseTimeMs || null,
+        entry.provider || null,
+        entry.model || null,
+        entry.userAgent || null,
+      ]
+    );
+  } catch (err) {
+    // Never let logging failures affect the user experience
+    console.error('[ChatLog] Failed to log interaction:', err);
+  }
+}
+
+/**
+ * Get recent chat logs for analytics dashboard.
+ */
+export async function getRecentChatLogs(limit: number = 50): Promise<any[]> {
+  const db = getPool();
+  const result = await db.query(
+    'SELECT id, session_id, user_query, assistant_answer, sources_cited, chunks_retrieved, search_time_ms, response_time_ms, created_at FROM chat_logs ORDER BY created_at DESC LIMIT $1',
+    [limit]
+  );
+  return result.rows;
 }
 
 /**

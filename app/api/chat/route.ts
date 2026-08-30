@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
 import { generateResponse } from '@/lib/llm';
 import { retrieveContext, buildRAGSystemPrompt, extractSources } from '@/lib/rag';
+import { logChatInteraction } from '@/lib/vector/db';
 
 export async function POST(req: Request) {
+  const requestStartTime = Date.now();
+
   try {
     const body = await req.json();
     const { message } = body;
@@ -14,8 +17,10 @@ export async function POST(req: Request) {
       );
     }
 
+    // Extract visitor info from request headers
+    const userAgent = req.headers.get('user-agent') || undefined;
+
     // ── Stage 5: Full RAG Pipeline ──────────────────────────────
-    // Step 1: Embed the user's question & search pgvector for relevant chunks
     let context;
     let ragSystemPrompt: string | undefined;
     let sources: ReturnType<typeof extractSources> = [];
@@ -33,11 +38,25 @@ export async function POST(req: Request) {
       );
     } catch (ragError: any) {
       console.warn('[RAG] Vector search failed, falling back to direct LLM:', ragError.message);
-      // If RAG fails (e.g. DATABASE_URL not set), fall back to direct LLM without context
     }
 
     // Step 2: Send the RAG-augmented prompt to the LLM
     const result = await generateResponse(message, [], ragSystemPrompt);
+
+    const responseTimeMs = Date.now() - requestStartTime;
+
+    // ── Log the interaction asynchronously (non-blocking) ──────
+    logChatInteraction({
+      userQuery: message,
+      assistantAnswer: result.answer,
+      sourcesCited: sources.map((s) => ({ title: s.title, score: s.score })),
+      chunksRetrieved: context?.retrievedChunks.length || 0,
+      searchTimeMs: context?.searchTimeMs,
+      responseTimeMs,
+      provider: result.provider,
+      model: result.model,
+      userAgent,
+    }).catch(() => {}); // Fire-and-forget — never block the response
 
     return NextResponse.json({
       answer: result.answer,
